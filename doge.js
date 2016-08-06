@@ -1,7 +1,9 @@
 'use strict';
 /* AWS Lambda ships with imageMagick out of the box */
 var gm = require('gm').subClass({ imageMagick: true }),
-    fs = require('fs')
+    fs = require('fs'),
+    AWS = require('aws-sdk'),
+    s3 = new AWS.S3()
 
 var colors = [
   "red",
@@ -46,7 +48,19 @@ module.exports.create = (event, context, cb) => {
       console.log("Error writing file: ", err)
       return cb(err, image)
     }
-    var imgdata = fs.readSync(fileName)
-    cb(null, imgdata)
+    var imgdata = fs.readFileSync(fileName)
+
+    s3.putObject(
+      {
+          Bucket: 'iopipe-workshop-doge',
+          Key: `doge-${fileNum}.jpg`,
+          Body: imgdata,
+          ContentType: 'image/jpeg'
+      },
+      (err, obj) => {
+        //cb(err, s3.getSignedUrl('getObject', obj))
+        cb(err, obj)
+      }
+    )
   })
 }

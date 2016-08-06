@@ -11,7 +11,7 @@
 #
 # Happy Coding!
 
-service: aws-nodejs # NOTE: update this with your service name
+service: iopipe-workshop-doge # NOTE: update this with your service name
 
 provider:
   name: aws
@@ -45,9 +45,9 @@ functions:
 #     - sns: greeter-topic
 
 # you can add CloudFormation resource templates here
-#resources:
-#  Resources:
-#    newResource:
-#      Type: AWS::S3::Bucket
-#      Properties:
-#        BucketName: newBucket
+resources:
+  Resources:
+    newResource:
+      Type: AWS::S3::Bucket
+      Properties:
+        BucketName: iopipe-workshop-doge

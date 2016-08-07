@@ -43,10 +43,10 @@ $ git clone https://github.com/iopipe/lambda-workshop
 Execute the lambda function, saving the output to a file:
 
 ```
-$ serverless invoke --function create -p event.json > my_doge.jpg
+$ serverless invoke --function create -p event.json
 ```
 
-Open `my_doge.jpg` in an image viewer. Edit event.json to change the
+A URL should be printed to your console. Visit this in your browser. Edit event.json to change the
 text overlaid onto the image.
 
 Edit the code and do fun things!

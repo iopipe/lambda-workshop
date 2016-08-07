@@ -1,6 +1,15 @@
 # Serverless Development Workshop
 
-Preparation:
+In this workshop, we'll deploy a simple serverless application which generates Doge meme images,
+randomly choosing colors and locations of text, writing an image into an S3 bucket.
+
+This will create an API that can be used by web services or users to generate doge images,
+while consuming no dedicated or long-lived resources besides space on S3.
+
+![Doge image](https://s3.amazonaws.com/iopipe-workshop-doge-2/doge-996.jpg)
+
+
+# Preparation:
 
 1. Access to a MacOS or Linux machine. These instructions are not tested on Windows; users may need to make small adaptations or run these commands inside of a Docker container or Linux VM. ([Install Docker for Windows](https://docs.docker.com/docker-for-windows/))
 2. Amazon Web Services account. Creation of an account is free and various services are provided under a free-tier, although a credit card is required at the time of account creation. AWS Lambda is free for up to 1 million invocations per month, for all users, which is more than sufficient for this course. Storage of functions may incur small fees (normally pennies / month).  Students are solely responsible for their AWS bill and all charges incurred as a result of this course.

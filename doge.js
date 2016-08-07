@@ -29,12 +29,12 @@ module.exports.create = (event, context, cb) => {
     })
 
     for (var bird of event.words) {
-      var size = Math.floor(Math.random() * (maxFontSize - minFontSize) + minFontSize + 1),
-          x = Math.floor(Math.random() * (maxWidth - size * bird.length)),
-          y = Math.floor(Math.random() * (maxHeight - size)),
+      var fontSize = Math.floor(Math.random() * (maxFontSize - minFontSize) + minFontSize + 1),
+          x = Math.floor(Math.random() * (maxWidth)), // - (fontSize * bird.length))),
+          y = Math.floor(Math.random() * (maxHeight)), // - fontSize)),
           color = colors[Math.floor(Math.random() * 4)]
 
-      image = image.fontSize(size).stroke(color).drawText(x, y, bird)
+      image = image.fontSize(fontSize).stroke(color).drawText(x, y, bird)
     }
   }
   catch (err) {
@@ -42,6 +42,7 @@ module.exports.create = (event, context, cb) => {
   }
   var fileNum = Math.floor(Math.random() * 1000)
   var fileName = `/tmp/doge-${fileNum}.jpg`
+  var s3filename = `doge-${fileNum}.jpg`
   console.log("Writing file: ", fileName)
   image.write(fileName, (err) => {
     if (err) {
@@ -49,17 +50,17 @@ module.exports.create = (event, context, cb) => {
       return cb(err, image)
     }
     var imgdata = fs.readFileSync(fileName)
-
-    s3.putObject(
-      {
-          Bucket: 'iopipe-workshop-doge',
-          Key: `doge-${fileNum}.jpg`,
-          Body: imgdata,
-          ContentType: 'image/jpeg'
-      },
+    var s3params = {
+       Bucket: 'iopipe-workshop-doge-1',
+       Key: s3filename,
+       Body: imgdata,
+       ContentType: 'image/jpeg',
+       ACL: "public-read"
+    }
+    s3.putObject(s3params,
       (err, obj) => {
         //cb(err, s3.getSignedUrl('getObject', obj))
-        cb(err, obj)
+        cb(err, `https://s3.amazonaws.com/${s3params.Bucket}/${s3filename}`)
       }
     )
   })

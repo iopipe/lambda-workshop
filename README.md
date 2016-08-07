@@ -80,3 +80,9 @@ exports.handler = iopipe(
 # Delete resources
 
 We have deleted various resources during this course. You may, of course, keep these applications and resources deployed, but you may incur small fees from Amazon in doing so. Make sure to delete all AWS Lambda functions, S3 objects, S3 buckets, and other resources created during this course using your AWS console. If in doubt, check the Billing "Service" in your AWS Console.
+
+The following command *should* remove all resources:
+
+```
+$ serverless remove
+```

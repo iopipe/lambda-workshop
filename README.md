@@ -40,7 +40,21 @@ Checkout this repo:
 $ git clone https://github.com/iopipe/lambda-workshop
 ```
 
-Execute the lambda function, saving the output to a file:
+## Re-name the project!
+
+*IMPORTANT*: Edit `serverless.yml` and `doge.js` to change `iopipe-workshop-doge-1` to a custom name (the chosen name
+must be globally unique). If this is not done, this code will not work!
+
+## Configure the IAM policy for the function:
+
+This function uploads files into Amazon S3. To accomplish this, the Lambda function must
+be granted permission to the S3 bucket.
+
+- Go into the IAM policy editor, click `Roles`.
+- Select the role which looks like, `iopipe-workshop-doge-1-dev-IamRoleLambda-`
+- Click `Attach Policy` and select `AmazonS3FullAccess`.
+
+## Execute the lambda function:
 
 ```
 $ serverless invoke --function create -p event.json

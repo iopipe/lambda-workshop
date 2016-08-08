@@ -49,6 +49,12 @@ Checkout this repo:
 $ git clone https://github.com/iopipe/lambda-workshop
 ```
 
+## Install npm modules
+
+```
+$ npm install
+```
+
 ## Re-name the project!
 
 Edit `serverless.yml` and `doge.js` to change `iopipe-workshop-doge-1` to a unique name.

@@ -55,6 +55,7 @@ Edit `serverless.yml` and `doge.js` to change `iopipe-workshop-doge-1` to a uniq
 
 ```
 $ sed -i "s/iopipe-workshop-doge-1/iopipe-workshop-doge-$(($RANDOM*$RANDOM))/g" doge.js serverless.yml
+```
 
 ## Configure the IAM policy for the function:
 

@@ -54,7 +54,7 @@ $ git clone https://github.com/iopipe/lambda-workshop
 Edit `serverless.yml` and `doge.js` to change `iopipe-workshop-doge-1` to a unique name.
 
 ```
-$ sed -e "s/iopipe-workshop-doge-1/iopipe-workshop-doge-$(($RANDOM*$RANDOM))/g" doge.js serverless.yml
+$ sed -i "s/iopipe-workshop-doge-1/iopipe-workshop-doge-$(($RANDOM*$RANDOM))/g" doge.js serverless.yml
 
 ## Configure the IAM policy for the function:
 

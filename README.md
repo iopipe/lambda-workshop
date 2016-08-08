@@ -63,6 +63,12 @@ Edit `serverless.yml` and `doge.js` to change `iopipe-workshop-doge-1` to a uniq
 $ sed -i "s/iopipe-workshop-doge-1/iopipe-workshop-doge-$(($RANDOM*$RANDOM))/g" doge.js serverless.yml
 ```
 
+## Deploy the app:
+
+```
+$ serverless deploy
+```
+
 ## Configure the IAM policy for the function:
 
 This function uploads files into Amazon S3. To accomplish this, the Lambda function must
@@ -71,12 +77,6 @@ be granted permission to the S3 bucket.
 - Go into the IAM policy editor, click `Roles`.
 - Select the role which looks like, `iopipe-workshop-doge-1-dev-IamRoleLambda-`
 - Click `Attach Policy` and select `AmazonS3FullAccess`.
-
-## Deploy the app:
-
-```
-$ serverless deploy
-```
 
 ## Execute the lambda function:
 
@@ -115,7 +115,7 @@ module.exports.create = iopipe((event, context, cb) => {
 ```
 
 * Redeploy: `serverless deploy`
-* Invoke function: `serverless invoke --function hello -p event.json`
+* Invoke function: `serverless invoke --function create -p event.json`
 * Check [dashboard](https://dashboard.iopipe.com)
 
 # Extra homework!

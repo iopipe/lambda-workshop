@@ -16,7 +16,9 @@ const minFontSize = 14
 
 module.exports.create = (event, context, cb) => {
   try {
-    var image = gm('doge.jpg'),
+    var dogerand = Math.floor(Math.random() * 4+1) 
+    var dogefile = `doge` + dogerand + `.jpg`
+    var image = gm(dogefile),
         fileNum = Math.floor(Math.random() * 1000),
         fileName = `/tmp/doge-${fileNum}.jpg`,
         s3filename = `doge-${fileNum}.jpg`

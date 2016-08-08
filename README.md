@@ -111,6 +111,18 @@ module.exports.create = iopipe((event, context, cb) => {
 * Invoke function: `serverless invoke --function hello -p event.json`
 * Check [dashboard](https://dashboard.iopipe.com)
 
+# Extra homework!
+
+This is actually a functioning Slackbot! If you have admin permission on a Slack, you can add this as a /doge slash command!
+
+- Visit [Custom Integrations](https://iopipe.slack.com/apps/manage/custom-integrations), choose 'Slash Commands', then 'Add Configuration'.
+- Specify the command `/doge` and click, `Add Integration`.
+- Provide the URL given by `serverless deploy`
+- Specify `GET` as the HTTP method.
+- Click `Save Integration`
+
+Now you can type `/doge this text gets printed onto your doge!`
+
 # Delete resources
 
 We have created various resources during this course. You may, of course, keep these applications and resources deployed, but you may incur small fees from Amazon in doing so. Make sure to delete all AWS Lambda functions, S3 objects, S3 buckets, and other resources created during this course using your AWS console. If in doubt, check the Billing "Service" in your AWS Console.

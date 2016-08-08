@@ -51,8 +51,10 @@ $ git clone https://github.com/iopipe/lambda-workshop
 
 ## Re-name the project!
 
-*IMPORTANT*: Edit `serverless.yml` and `doge.js` to change `iopipe-workshop-doge-1` to a custom name (the chosen name
-must be globally unique). If this is not done, this code will not work!
+Edit `serverless.yml` and `doge.js` to change `iopipe-workshop-doge-1` to a unique name.
+
+```
+$ sed -e "s/iopipe-workshop-doge-1/iopipe-workshop-doge-$(($RANDOM*$RANDOM))/g" doge.js serverless.yml
 
 ## Configure the IAM policy for the function:
 
@@ -62,6 +64,12 @@ be granted permission to the S3 bucket.
 - Go into the IAM policy editor, click `Roles`.
 - Select the role which looks like, `iopipe-workshop-doge-1-dev-IamRoleLambda-`
 - Click `Attach Policy` and select `AmazonS3FullAccess`.
+
+## Deploy the app:
+
+```
+$ serverless deploy
+```
 
 ## Execute the lambda function:
 
@@ -83,26 +91,31 @@ Application Performance Monitoring & Management (APM).
 IOpipe is offering free beta access to an APM service designed specifically
 for serverless applications.
 
-* `cd iopipe-workshop`
 * `npm install --save iopipe`
-* Add code:
+* Import & configure the module:
 
 ```
 /* Get client-id token from https://dashboard.iopipe.com */
 require("iopipe")({ clientId: "my-client-id-here" })
-exports.handler = iopipe(
-  function(event, context, callback) => {
-    callback("Hello world!")
-  }
-)
 ```
 
-* Invoke function again: `serverless invoke --function hello -p event.json`
+* Modify the handler, wrapping the function declaration with iopipe(). Make sure to close the parens by placing a `)` character after the final `}` character.
+
+```
+module.exports.create = iopipe((event, context, cb) => {
+  ...
+})
+```
+
+* Redeploy: `serverless deploy`
+* Invoke function: `serverless invoke --function hello -p event.json`
 * Check [dashboard](https://dashboard.iopipe.com)
 
 # Delete resources
 
-We have deleted various resources during this course. You may, of course, keep these applications and resources deployed, but you may incur small fees from Amazon in doing so. Make sure to delete all AWS Lambda functions, S3 objects, S3 buckets, and other resources created during this course using your AWS console. If in doubt, check the Billing "Service" in your AWS Console.
+We have created various resources during this course. You may, of course, keep these applications and resources deployed, but you may incur small fees from Amazon in doing so. Make sure to delete all AWS Lambda functions, S3 objects, S3 buckets, and other resources created during this course using your AWS console. If in doubt, check the Billing "Service" in your AWS Console.
+
+Resources will have been created under IAM roles, Lambda functions, S3 buckets, API Gateway, and Cloudformation. Simply deleting the cloud formation resources is usually enough, but again, double-check!
 
 The following command *should* remove all resources:
 

@@ -11,7 +11,7 @@
 #
 # Happy Coding!
 
-service: iopipe-workshop-doge-2 # NOTE: update this with your service name
+service: iopipe-workshop-doge-1 # NOTE: update this with your service name
 
 provider:
   name: aws
@@ -20,7 +20,7 @@ provider:
       -  Effect: "Allow"
          Action:
            - "s3:ListBucket"
-         Resource: { "Fn::Join" : ["", ["arn:aws:s3:::", { "Ref" : "iopipe-workshop-doge-2"} ] ] }
+         Resource: { "Fn::Join" : ["", ["arn:aws:s3:::", { "Ref" : "iopipe-workshop-doge-1"} ] ] }
       -  Effect: "Allow"
          Action:
            - "s3:PutObject"
@@ -28,7 +28,7 @@ provider:
            Fn::Join:
              - ""
              - - "arn:aws:s3:::"
-               - "Ref" : "iopipe-workshop-doge-2"
+               - "Ref" : "iopipe-workshop-doge-1"
 
 # you can overwrite defaults here
 defaults:
@@ -63,4 +63,4 @@ resources:
     newResource:
       Type: AWS::S3::Bucket
       Properties:
-        BucketName: iopipe-workshop-doge-2
+        BucketName: iopipe-workshop-doge-1

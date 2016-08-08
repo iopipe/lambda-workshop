@@ -46,7 +46,7 @@ functions:
     events:
       - http:
           path: doge/create
-          method: post
+          method: get
 
 #   you can add any of the following events
 #   events:

@@ -28,7 +28,7 @@ module.exports.create = (event, context, cb) => {
       var maxWidth = value.width,
           maxHeight = value.height
 
-      for (var bird of event.words) {
+      for (var bird of event.query.text.split(" ")) {
         var fontSize = Math.floor(Math.random() * (maxFontSize - minFontSize) + minFontSize + 1),
             x = Math.floor(Math.random() * (maxWidth - (fontSize * bird.length))),
             y = Math.floor(Math.random() * (maxHeight - (fontSize * 2)) + fontSize),
@@ -53,7 +53,11 @@ module.exports.create = (event, context, cb) => {
         }
         s3.putObject(s3params,
           (err, obj) => {
-            cb(err, `https://s3.amazonaws.com/${s3params.Bucket}/${s3filename}`)
+            cb(err, {
+              text: `<https://s3.amazonaws.com/${s3params.Bucket}/${s3filename}>`,
+              unfurl_links: true,
+              response_type: "in_channel"
+            })
           }
         )
       })

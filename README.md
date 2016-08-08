@@ -103,7 +103,7 @@ for serverless applications.
 
 ```
 /* Get client-id token from https://dashboard.iopipe.com */
-require("iopipe")({ clientId: "my-client-id-here" })
+var iopipe = require("iopipe")({ clientId: "my-client-id-here" })
 ```
 
 * Modify the handler, wrapping the function declaration with iopipe(). Make sure to close the parens by placing a `)` character after the final `}` character.

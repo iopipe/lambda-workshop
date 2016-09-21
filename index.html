@@ -144,6 +144,26 @@ _Psst: _`sls`_ is shorthand for the _`serverless`_ CLI_
 
 `serverless deploy`
 ---
+## Give role access to S3
+
+- Go to the IAM policy editor, click `Roles`.
+- Select the role which looks like: `iopipe-workshop-doge-1-dev-IamRoleLambda-`
+- Click `Attach Policy` and select `AmazonS3FullAccess`
+---
+## Try it out
+
+`serverless invoke --function create -p event.json`
+---
+
+## Add to Slack
+
+- Visit [Custom Integrations](https://YOUR_ORG.slack.com/apps/manage/custom-integrations), choose 'Slash Commands', then 'Add Configuration'.
+- Specify the command `/doge` and click, `Add Integration`.
+- Provide the URL given by `serverless deploy`
+- Specify `GET` as the HTTP method.
+- Click `Save Integration`
+---
+
 class: smaller
 Slides at
 [pselle.github.io/lambda-workshop](http://pselle.github.io/lambda-workshop)

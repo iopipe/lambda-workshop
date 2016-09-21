@@ -15,6 +15,7 @@ service: iopipe-workshop-doge-1 # NOTE: update this with your service name
 
 provider:
   name: aws
+  region: us-east-1
   runtime: nodejs4.3
   iamRoleStatements:
       -  Effect: "Allow"
@@ -29,10 +30,6 @@ provider:
              - ""
              - - "arn:aws:s3:::"
                - "Ref" : "iopipe-workshop-doge-1"
-
-# you can overwrite defaults here
-defaults:
-  region: us-east-1
 
 #package:
 #  include:

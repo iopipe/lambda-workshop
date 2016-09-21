@@ -17,19 +17,19 @@ provider:
   name: aws
   region: us-east-1
   runtime: nodejs4.3
-  iamRoleStatements:
-      -  Effect: "Allow"
-         Action:
-           - "s3:ListBucket"
-         Resource: { "Fn::Join" : ["", ["arn:aws:s3:::", { "Ref" : "iopipe-workshop-doge-1"} ] ] }
-      -  Effect: "Allow"
-         Action:
-           - "s3:PutObject"
-         Resource:
-           Fn::Join:
-             - ""
-             - - "arn:aws:s3:::"
-               - "Ref" : "iopipe-workshop-doge-1"
+  # iamRoleStatements:
+  #     -  Effect: "Allow"
+  #        Action:
+  #          - "s3:ListBucket"
+  #        Resource: { "Fn::Join" : ["", ["arn:aws:s3:::", { "Ref" : "iopipe-workshop-doge-1"} ] ] }
+  #     -  Effect: "Allow"
+  #        Action:
+  #          - "s3:PutObject"
+  #        Resource:
+  #          Fn::Join:
+  #            - ""
+  #            - - "arn:aws:s3:::"
+  #              - "Ref" : "iopipe-workshop-doge-1"
 
 #package:
 #  include:

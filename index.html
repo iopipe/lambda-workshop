@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Getting Started with AWS Lambda</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <style type="text/css">
+      @import url(https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
+      @import url(https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic);
+      @import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
+
+      body { font-family: 'Droid Serif'; }
+      h1, h2, h3 {
+        font-family: 'Yanone Kaffeesatz';
+        font-weight: normal;
+      }
+      img { max-width: 100%}
+      .smaller.remark-slide-content {font-size: 2.5rem}
+      .remark-code, .remark-inline-code { font-family: 'Ubuntu Mono'; }
+      .remark-slide-content { font-size: 2.5rem; padding: 1em 2em}
+      .red { color: red;}
+      .remark-code {font-size: 1.3rem;}
+      .important-bit pre code, #the-important-bit + pre code { font-size: 35px }
+      .remark-slide-number { font-size: 14px;}
+    </style>
+  </head>
+  <body>
+    <textarea id="source">
+# Getting started with AWS Lambda
+### with Pam Selle, [@pamasaur](https://twitter.com/pamasaur) [thewebivore.com](http://thewebivore.com)
+---
+![IOpipe logo](images/iopipe.png)
+
+https://iopipe.com
+???
+Analytics and distributed tracing service. Sign up!
+---
+# Review
+---
+![no cloud](images/no-cloud.png)
+---
+What if you don't care about the computer you run on
+---
+What if that computer "just" runs your code on demand?
+---
+
+# Enter: FaaS
+
+(Functions as a Service)
+
+---
+# FaaS options
+
+- AWS Lambda
+- Google Cloud Functions
+- Azure Functions
+- IBM OpenWhisk
+- Webtask.io
+
+---
+class: smaller
+## Backstory
+
+AWS released Lambda in 2014, considered groundbreaking:
+
+- New pricing model (usage vs monthly billing)
+- Functions scale out of the box
+---
+## How's it work?
+
+Containers and stuff!
+
+---
+class: smaller
+## Pricing
+
+First *1 million requests per month are free*
+
+$0.20/1MM after ($0.0000002 per request)
+---
+## Invoking Lambda functions
+
+- API Gateway
+- SNS (ex. web hooks)
+- Cloudwatch Schedule
+- Alexa
+- S3
+- Dynamo
+- ... and more
+
+---
+
+# Tooling
+
+Most popular (and what we will use today):
+
+[The Serverless Framework](http://www.serverless.com)
+
+[Awesome list of serverless resources](https://github.com/anaibol/awesome-serverless).
+
+---
+# Let's do a thing!
+
+These instructions are also at [https://github.com/iopipe/lambda-workshop](https://github.com/iopipe/lambda-workshop)
+
+---
+class:smaller
+# Pre-reqs
+
+* [NodeJS 4.4.3 or higher](https://nodejs.org/en/)
+* AWS account, for which you have an access key/secret (or create one)
+* AWS CLI will be handy: `pip install awscli`
+
+
+---
+class:smaller
+## Install Serverless
+
+`sudo npm install -g serverless`
+
+---
+class:smaller
+## Create the project
+
+`serverless create --template aws-nodejs --path lambda-workshop`
+
+`cd lambda-workshop`
+
+_Psst: _`sls`_ is shorthand for the _`serverless`_ CLI_
+
+---
+## Deploy!
+
+`serverless deploy`
+---
+## Test!
+
+`serverless invoke --function hello -p event.json`
+---
+## Deploy a sample project
+
+`git clone https://github.com/iopipe/lambda-workshop`
+
+`npm install`
+
+`serverless deploy`
+---
+class: smaller
+Slides at
+[pselle.github.io/lambda-workshop](http://pselle.github.io/lambda-workshop)
+---
+class: center, top
+
+# Thank you!
+
+### [@pamasaur](https://twitter.com/pamasaur)
+
+### [thewebivore.com](http://thewebivore.com)
+
+### [IOpipe](https://iopipe.com)
+    </textarea>
+    <!--<script src="https://gnab.github.io/remark/downloads/remark-latest.min.js"></script>-->
+    <script src="js/remark-latest.min.js"></script>
+    <script>
+      var slideshow = remark.create();
+    </script>
+  </body>
+</html>

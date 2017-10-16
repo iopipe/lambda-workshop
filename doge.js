@@ -30,7 +30,7 @@ module.exports.create = (event, context, cb) => {
       var maxWidth = value.width,
           maxHeight = value.height
 
-      for (var bird of event.query.text.split(" ")) {
+      for (var bird of event.queryStringParameters.text.split(" ")) {
         var fontSize = Math.floor(Math.random() * (maxFontSize - minFontSize) + minFontSize + 1),
             x = Math.floor(Math.random() * (maxWidth - (fontSize * bird.length))),
             y = Math.floor(Math.random() * (maxHeight - (fontSize * 2)) + fontSize),

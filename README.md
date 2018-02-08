@@ -1,5 +1,7 @@
 # Serverless Development Workshop
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/iopipe/lambda-workshop.svg)](https://greenkeeper.io/)
+
 In this workshop, we'll deploy a simple serverless application which generates Doge meme images,
 randomly choosing colors and locations of text, writing an image into an S3 bucket.
 
